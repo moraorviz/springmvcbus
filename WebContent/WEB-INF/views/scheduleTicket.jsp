@@ -9,21 +9,56 @@
 <body>
 	<h1 style="text-align: center;">TUBUS.COM</h1>
 	<br>
-	<h2 style="text-align: center;">Welcome to the smallest bus ticket shop in
-		the world!</h2>
-	<br> Our Catalog:
+	<h2 style="text-align: center;">
+		<spring:message code="welcome" />
+	</h2>
 	<br>
-	<table>
-		<tr>
-			<td><b>City Id</b></td>
-			<td><b>Name</b></td>
-		</tr>
-		<c:forEach items="${citieslist}" var="city">
-			<tr>
-				<td><c:out value="${city.id}"></c:out></td>
-				<td><c:out value="${city.name}"></c:out></td>
-			</tr>
-		</c:forEach>
-	</table>
+	<spring:message code="select.type" />
+	<input type="checkbox" id="Check1" value="oneway"
+		onclick="selectOnlyThis(this.id)" />
+	<spring:message code="select.oneway" />
+	<input type="checkbox" id="Check2" value="round"
+		onclick="selectOnlyThis(this.id)" />
+	<spring:message code="select.round" />
+	<br>
+	
+	<form:form modelAttribute='travel'>
+		<spring:message code="select.departure_city" />
+		<form:select itemLabel="name" path="departure" items="${citieslist}" />
+		<br>
+		<spring:message code="select.arrival_city" />
+		<form:select itemLabel="name" path="arrival" items="${citieslist}" />
+		<br>
+		<spring:message code="select.departure_date" />
+		<form:select path="departureDate" items="${dateslist}" />
+		<br>
+		<spring:message code="select.return_date" />
+		<form:select disabled="true" path="returnDate" items="${dateslist}" />
+		<br>
+		<spring:message code="select.number" />
+		<form:select path="number" items="${numberlist}" />
+	</form:form>
+	
+	<script>
+
+		document.getElementById("returnDate").disabled = true;
+	
+		function selectOnlyThis(id) {
+			for (var i = 1; i <= 2; i++) {
+				document.getElementById("Check" + i).checked = false;
+			}
+			document.getElementById(id).checked = true;
+			roundtravel();
+		}
+
+		function roundtravel() {
+			if (document.getElementById("Check1").checked) {
+				document.getElementById("returnDate").disabled = true;
+			} else {
+				document.getElementById("returnDate").disabled = false;
+			}
+		}
+		
+	</script>
 </body>
 </html>
