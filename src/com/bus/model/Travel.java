@@ -12,7 +12,6 @@ public class Travel {
 	private Date departureHour;
 	private Date arrivalDate;
 	private Date arrivalHour;
-	private Date returnDate;
 	
 	public int getId() {
 		return id;
@@ -61,11 +60,5 @@ public class Travel {
 	}
 	public void setArrivalHour(Date arrivalHour) {
 		this.arrivalHour = arrivalHour;
-	}
-	public Date getReturnDate() {
-		return returnDate;
-	}
-	public void setReturnDate(Date returnDate) {
-		this.returnDate = returnDate;
 	}
 }

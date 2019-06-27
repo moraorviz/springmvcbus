@@ -12,13 +12,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.bus.business.CityManagerService;
-import com.bus.model.Travel;
 
 @Controller
 @RequestMapping("/scheduleTicket")
+@SessionAttributes("search")
 public class ScheduleTicketController {
 
 	@Autowired
@@ -36,9 +36,10 @@ public class ScheduleTicketController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String scheduleTicket(Model model) throws Exception {
+	public String getST(Model model) throws Exception {
 		System.out.println("Executing ScheduleTicket GET method.");
 
+		Search search = new Search();
 		List<Integer> numberList = new ArrayList<Integer>() {
 			{
 				add(1);
@@ -54,11 +55,13 @@ public class ScheduleTicketController {
 		model.addAttribute("numberlist", numberList);
 		model.addAttribute("dateslist", datesList);
 		model.addAttribute("citieslist", cityManagerService.getCities());
+		model.addAttribute("search", search);
 		return "scheduleTicket";
 	}
-
-	@ModelAttribute
-	Travel getTravel() {
-		return new Travel();
+	
+	@RequestMapping(method=RequestMethod.POST)
+	public String postST(Model model) throws Exception {
+		System.out.println("Executing ScheduleTicket POST method.");
+		return "scheduleTicket";
 	}
 }

@@ -22,12 +22,12 @@
 	<spring:message code="select.round" />
 	<br>
 	
-	<form:form modelAttribute='travel'>
+	<form:form modelAttribute="search">
 		<spring:message code="select.departure_city" />
-		<form:select itemLabel="name" path="departure" items="${citieslist}" />
+		<form:select itemValue="id" itemLabel="name" path="departure" items="${citieslist}" />
 		<br>
 		<spring:message code="select.arrival_city" />
-		<form:select itemLabel="name" path="arrival" items="${citieslist}" />
+		<form:select itemValue="id" itemLabel="name" path="arrival" items="${citieslist}" />
 		<br>
 		<spring:message code="select.departure_date" />
 		<form:select path="departureDate" items="${dateslist}" />
@@ -37,6 +37,7 @@
 		<br>
 		<spring:message code="select.number" />
 		<form:select path="number" items="${numberlist}" />
+		<input type="submit"/>
 	</form:form>
 	
 	<script>
