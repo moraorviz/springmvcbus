@@ -22,7 +22,7 @@
 	<spring:message code="select.round" />
 	<br>
 	
-	<form:form modelAttribute="search">
+	<form:form modelAttribute="search" accept-charset="utf-8">
 		<spring:message code="select.departure_city" />
 		<form:select itemValue="id" itemLabel="name" path="departure" items="${citieslist}" />
 		<br>

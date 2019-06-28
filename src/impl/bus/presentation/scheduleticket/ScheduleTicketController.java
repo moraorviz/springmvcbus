@@ -10,22 +10,26 @@ import java.util.stream.IntStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.bus.business.CityManagerService;
+import com.bus.business.TicketManagerService;
+import com.bus.model.Search;
+import com.bus.model.Travel;
 
 @Controller
 @RequestMapping("/scheduleTicket")
-@SessionAttributes("search")
+@SessionAttributes("travels")
 public class ScheduleTicketController {
 
 	@Autowired
-	private CityManagerService cityManagerService;
+	private TicketManagerService ticketManagerService;
 
-	public void setCityManagerService(CityManagerService cityManagerService) {
-		this.cityManagerService = cityManagerService;
+	public void setCityManagerService(TicketManagerService ticketManagerService) {
+		this.ticketManagerService = ticketManagerService;
 	}
 
 	public static List<LocalDate> getDatesBetweenUsingJava8(LocalDate startDate, LocalDate endDate) {
@@ -36,7 +40,7 @@ public class ScheduleTicketController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String getST(Model model) throws Exception {
+	public String getScheduleTicket(Model model) throws Exception {
 		System.out.println("Executing ScheduleTicket GET method.");
 
 		Search search = new Search();
@@ -54,14 +58,27 @@ public class ScheduleTicketController {
 
 		model.addAttribute("numberlist", numberList);
 		model.addAttribute("dateslist", datesList);
-		model.addAttribute("citieslist", cityManagerService.getCities());
-		model.addAttribute("search", search);
+		model.addAttribute("citieslist", ticketManagerService.getCities());
 		return "scheduleTicket";
 	}
 	
-	@RequestMapping(method=RequestMethod.POST)
-	public String postST(Model model) throws Exception {
+	@RequestMapping(method = RequestMethod.POST)
+	public String postScheduleTicket(@ModelAttribute Search search, BindingResult result) throws Exception {
 		System.out.println("Executing ScheduleTicket POST method.");
-		return "scheduleTicket";
+		System.out.println("Received " + search);
+		
+		try {
+			List<Travel> travels = this.ticketManagerService.getTravels(search);
+			System.out.println(travels);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "viewAvailable";
+	}
+	
+	@ModelAttribute
+	Search getSearch() {
+		return new Search();
 	}
 }

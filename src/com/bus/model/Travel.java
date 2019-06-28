@@ -1,6 +1,7 @@
 package com.bus.model;
 
 import java.sql.Date;
+import java.sql.Time;
 
 public class Travel {
 	
@@ -9,9 +10,9 @@ public class Travel {
 	private int arrival;
 	private int number;
 	private Date departureDate;
-	private Date departureHour;
+	private Time departureHour;
 	private Date arrivalDate;
-	private Date arrivalHour;
+	private Time arrivalHour;
 	
 	public int getId() {
 		return id;
@@ -43,10 +44,10 @@ public class Travel {
 	public void setDepartureDate(Date departureDate) {
 		this.departureDate = departureDate;
 	}
-	public Date getDepartureHour() {
+	public Time getDepartureHour() {
 		return departureHour;
 	}
-	public void setDepartureHour(Date departureHour) {
+	public void setDepartureHour(Time departureHour) {
 		this.departureHour = departureHour;
 	}
 	public Date getArrivalDate() {
@@ -55,10 +56,10 @@ public class Travel {
 	public void setArrivalDate(Date arrivalDate) {
 		this.arrivalDate = arrivalDate;
 	}
-	public Date getArrivalHour() {
+	public Time getArrivalHour() {
 		return arrivalHour;
 	}
-	public void setArrivalHour(Date arrivalHour) {
+	public void setArrivalHour(Time arrivalHour) {
 		this.arrivalHour = arrivalHour;
 	}
 }

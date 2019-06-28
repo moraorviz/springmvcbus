@@ -14,17 +14,17 @@
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="messages" />
 	</bean>
-	
-	<bean id="cityManagerService"
-		class="impl.bus.business.citymanager.CityManagerEJBService">
+
+	<bean id="ticketManagerService"
+		class="impl.bus.business.ticketmanager.TicketManagerEJBService">
 
 	</bean>
 
-	<bean id="cityManager"
-		class="impl.bus.business.citymanager.CityManager">
+	<bean id="ticketManager"
+		class="impl.bus.business.ticketmanager.TicketManager">
 	</bean>
 
 
-	<bean id="cityDataService" class="impl.bus.persistence.city.CityDAO" />
+	<bean id="ticketDataService" class="impl.bus.persistence.ticket.TicketDAO" />
 
 </beans>
