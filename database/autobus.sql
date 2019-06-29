@@ -40,7 +40,7 @@ INSERT INTO `city` VALUES (1, 'Oviedo'),
 (12, 'Santiago de Compostela'),
 (13, 'Logroño'),
 (14, 'Melilla'),
-(15, 'Murica'),
+(15, 'Murcia'),
 (16, 'Pamplona'),
 (17, 'Valencia'),
 (18, 'Vitoria');

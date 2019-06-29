@@ -10,5 +10,6 @@
 	<h1 style="text-align: center;">TUBUS.COM</h1>
 	<br>
 	Buy Ticket.
+	<c:out value="${shoppingCart.id}"/>
 </body>
 </html>

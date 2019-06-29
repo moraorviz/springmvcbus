@@ -10,6 +10,7 @@
 	<h1 style="text-align: center;">TUBUS.COM</h1>
 	<spring:message code="show.idas"/>
 	<br>
+	<form:form modelAttribute="shoppingCart">
 	<table>
 		<tr>
 			<td><b><spring:message code="show.estacionsalida"/></b></td>
@@ -29,17 +30,17 @@
 				<td><c:out value="${travel.arrivalDate}"></c:out></td>
 				<td><c:out value="${travel.arrivalHour}"></c:out></td>
 				<td>
-					<input type="checkbox" name="Check${travel.id}" id="Check${loop.index}" onclick="selectOnlyThis(this.id)" value="${travel.id}">
+					<form:checkbox path="id" id="Check${loop.index}" onclick="selectOnlyThis(this.id)" value="${travel.id}" />
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
+	<input type="submit" value="submit" />
+	</form:form>
 		<a href="buyTicket"><spring:message code="select.buy"/></a><br/>
 		<a href="printTicket"><spring:message code="select.print"/></a>
 		
 		<script>
-		
-		console.log(document.getElementById("Check0").value);
 		
 		function selectOnlyThis(id) {
 			for (var i = 0; i <= 1; i++) {

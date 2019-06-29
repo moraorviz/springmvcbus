@@ -22,8 +22,7 @@ import com.bus.model.Search;
 import com.bus.model.Travel;
 
 @Controller
-@RequestMapping("/scheduleTicket")
-@SessionAttributes("travels")
+@SessionAttributes("shoppingCart")
 public class ScheduleTicketController {
 
 	@Autowired
@@ -40,11 +39,10 @@ public class ScheduleTicketController {
 				.collect(Collectors.toList());
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/scheduleTicket", method = RequestMethod.GET)
 	public String getScheduleTicket(Model model) throws Exception {
 		System.out.println("Executing ScheduleTicket GET method.");
 
-		Search search = new Search();
 		List<Integer> numberList = new ArrayList<Integer>() {
 			{
 				add(1);
@@ -67,18 +65,37 @@ public class ScheduleTicketController {
 		return "scheduleTicket";
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
-	public String postScheduleTicket(@ModelAttribute Search search, BindingResult result, Model model) throws Exception {
+	@RequestMapping(value = "/buyTicket", method = RequestMethod.GET)
+	public String getBuyTicket(ShoppingCart shoppingCart) throws Exception {
+		System.out.println("Executing BuyTicket GET method.");
+		System.out.println(shoppingCart.getId());
+		return "buyTicket";
+	}
+	
+	@RequestMapping(value = "/viewAvailable", method = RequestMethod.GET)
+	public String getViewAvailable(Model model) throws Exception {
+		System.out.println("Executing ViewAvailable GET method.");
+		return "viewAvailable";
+	}
+	
+	@RequestMapping(value = "/scheduleTicket", method = RequestMethod.POST)
+	public String postScheduleTicket(@ModelAttribute Search search, BindingResult result, Model model, ShoppingCart shoppingCart) throws Exception {
 		System.out.println("Executing ScheduleTicket POST method.");
 		System.out.println("Received " + search);
 		
 		try {
 			model.addAttribute("travels", this.ticketManagerService.getTravels(search));
+			model.addAttribute("shoppingCart", shoppingCart);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return "viewAvailable";
+		// This conditional part here is very important.
+		if (shoppingCart.getId() == null) {
+			return "viewAvailable";
+		} else {
+			return "redirect:buyTicket";
+		}
 	}
 	
 	@ModelAttribute
