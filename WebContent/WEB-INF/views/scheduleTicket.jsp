@@ -30,10 +30,10 @@
 		<form:select itemValue="id" itemLabel="name" path="arrival" items="${citieslist}" />
 		<br>
 		<spring:message code="select.departure_date" />
-		<form:select path="departureDate" items="${dateslist}" />
+		<form:select path="departureDate" type="Date" items="${dateslist}" />
 		<br>
 		<spring:message code="select.return_date" />
-		<form:select disabled="true" path="returnDate" items="${dateslist}" />
+		<form:select disabled="true" path="returnDate" type="Date" items="${dateslist}" />
 		<br>
 		<spring:message code="select.number" />
 		<form:select path="number" items="${numberlist}" />

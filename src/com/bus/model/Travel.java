@@ -8,7 +8,6 @@ public class Travel {
 	private int id;
 	private int departure;
 	private int arrival;
-	private int number;
 	private Date departureDate;
 	private Time departureHour;
 	private Date arrivalDate;
@@ -31,12 +30,6 @@ public class Travel {
 	}
 	public void setArrival(int arrival) {
 		this.arrival = arrival;
-	}
-	public int getNumber() {
-		return number;
-	}
-	public void setNumber(int number) {
-		this.number = number;
 	}
 	public Date getDepartureDate() {
 		return departureDate;

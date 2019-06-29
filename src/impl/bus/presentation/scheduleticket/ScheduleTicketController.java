@@ -1,5 +1,6 @@
 package impl.bus.presentation.scheduleticket;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -53,8 +54,12 @@ public class ScheduleTicketController {
 			}
 		};
 		
-		List<LocalDate> datesList = ScheduleTicketController.getDatesBetweenUsingJava8(LocalDate.of(2019, 07, 01),
+		List<LocalDate> datesListLD = ScheduleTicketController.getDatesBetweenUsingJava8(LocalDate.of(2019, 07, 01),
 				LocalDate.of(2019, 12, 31));
+		List<Date> datesList = new ArrayList<Date>(datesListLD.size());
+		for (LocalDate date:datesListLD) {
+			datesList.add(Date.valueOf(date));
+		}
 
 		model.addAttribute("numberlist", numberList);
 		model.addAttribute("dateslist", datesList);
@@ -63,13 +68,12 @@ public class ScheduleTicketController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String postScheduleTicket(@ModelAttribute Search search, BindingResult result) throws Exception {
+	public String postScheduleTicket(@ModelAttribute Search search, BindingResult result, Model model) throws Exception {
 		System.out.println("Executing ScheduleTicket POST method.");
 		System.out.println("Received " + search);
 		
 		try {
-			List<Travel> travels = this.ticketManagerService.getTravels(search);
-			System.out.println(travels);
+			model.addAttribute("travels", this.ticketManagerService.getTravels(search));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

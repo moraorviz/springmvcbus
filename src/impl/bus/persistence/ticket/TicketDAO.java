@@ -66,7 +66,6 @@ public class TicketDAO implements TicketDataService {
             String SQL_DRV = "com.mysql.jdbc.Driver";
             String SQL_URL = "jdbc:mysql://127.0.0.1:3306/autobus";
             Date departureDate = search.getDepartureDate();
-
             Class.forName(SQL_DRV);
             con = DriverManager.getConnection(SQL_URL, "mario", "password");
             ps = con.prepareStatement("select * from autobus.travel where departure_date <= ?");

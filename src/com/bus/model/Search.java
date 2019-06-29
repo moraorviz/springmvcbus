@@ -9,7 +9,7 @@ public class Search {
 	private int arrival;
 	private Date departureDate;
 	private Date returnDate;
-	private int number;
+	private Integer number;
 	
 	public int getArrival() {
 		return arrival;
@@ -29,10 +29,10 @@ public class Search {
 	public void setReturnDate(Date returnDate) {
 		this.returnDate = returnDate;
 	}
-	public int getNumber() {
+	public Integer getNumber() {
 		return number;
 	}
-	public void setNumber(int number) {
+	public void setNumber(Integer number) {
 		this.number = number;
 	}
 	public int getDeparture() {
@@ -40,6 +40,12 @@ public class Search {
 	}
 	public void setDeparture(int departure) {
 		this.departure = departure;
+	}
+	
+	@Override
+	public String toString() {
+		return "Search [departure=" + departure + ", arrival=" + arrival + ", departureDate=" + departureDate + 
+				", returnDate=" + returnDate + ", number=" + number + "]";
 	}
 
 }
