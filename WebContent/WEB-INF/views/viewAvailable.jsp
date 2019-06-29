@@ -20,7 +20,7 @@
 			<td><b><spring:message code="show.horallegada"/></b></td>
 			<td><b><spring:message code="show.elegir"/></b>
 		</tr>
-		<c:forEach items="${travels}" var="travel">
+		<c:forEach items="${travels}" var="travel" varStatus="loop">
 			<tr>
 				<td><c:out value="${travel.departure}"></c:out></td>
 				<td><c:out value="${travel.arrival}"></c:out></td>
@@ -29,12 +29,25 @@
 				<td><c:out value="${travel.arrivalDate}"></c:out></td>
 				<td><c:out value="${travel.arrivalHour}"></c:out></td>
 				<td>
-					<a href="buyTicket">
-   						<button><spring:message code="show.comprar"/></button>
-					</a>
+					<input type="checkbox" name="Check${travel.id}" id="Check${loop.index}" onclick="selectOnlyThis(this.id)" value="${travel.id}">
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
+		<a href="buyTicket"><spring:message code="select.buy"/></a><br/>
+		<a href="printTicket"><spring:message code="select.print"/></a>
+		
+		<script>
+		
+		console.log(document.getElementById("Check0").value);
+		
+		function selectOnlyThis(id) {
+			for (var i = 0; i <= 1; i++) {
+				document.getElementById("Check" + i).checked = false;
+			}
+			document.getElementById(id).checked = true;
+		}
+			
+		</script>
 </body>
 </html>
