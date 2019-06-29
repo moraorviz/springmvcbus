@@ -18,6 +18,7 @@
 			<td><b><spring:message code="show.horasalida"/></b></td>
 			<td><b><spring:message code="show.fechallegada"/></b></td>
 			<td><b><spring:message code="show.horallegada"/></b></td>
+			<td><b><spring:message code="show.elegir"/></b>
 		</tr>
 		<c:forEach items="${travels}" var="travel">
 			<tr>
@@ -27,6 +28,11 @@
 				<td><c:out value="${travel.departureHour}"></c:out></td>
 				<td><c:out value="${travel.arrivalDate}"></c:out></td>
 				<td><c:out value="${travel.arrivalHour}"></c:out></td>
+				<td>
+					<a href="buyTicket">
+   						<button><spring:message code="show.comprar"/></button>
+					</a>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>
