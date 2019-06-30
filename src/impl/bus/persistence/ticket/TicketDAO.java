@@ -230,7 +230,6 @@ public class TicketDAO implements TicketDataService {
 		System.out.println("Deleting ticket: " + ticket.toString());
 		
 		PreparedStatement ps = null;
-		ResultSet rs = null;
         Connection con = null;
 		
         try {

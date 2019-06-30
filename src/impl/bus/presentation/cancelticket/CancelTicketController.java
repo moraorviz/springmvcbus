@@ -1,9 +1,5 @@
 package impl.bus.presentation.cancelticket;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bus.business.TicketManagerService;
 import com.bus.model.Message;
-import com.bus.model.Search;
 import com.bus.model.Ticket;
 
 
