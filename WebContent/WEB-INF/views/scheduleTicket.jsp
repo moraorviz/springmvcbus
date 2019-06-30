@@ -37,8 +37,10 @@
 		<br>
 		<spring:message code="select.number" />
 		<form:select path="number" items="${numberlist}" />
+		<br>
 		<input type="submit"/>
 	</form:form>
+	<a href="cancelTicket"><spring:message code="select.cancel"/></a>
 	
 	<script>
 

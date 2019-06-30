@@ -37,7 +37,6 @@
 	</table>
 	<input type="submit" value="submit" />
 	</form:form>
-		<a href="buyTicket"><spring:message code="select.buy"/></a><br/>
 		<a href="printTicket"><spring:message code="select.print"/></a>
 		
 		<script>

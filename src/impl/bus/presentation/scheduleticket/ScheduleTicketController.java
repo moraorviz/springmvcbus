@@ -18,8 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.bus.business.TicketManagerService;
-import com.bus.model.Search;
-import com.bus.model.Travel;
+import com.bus.model.Search;	
 
 @Controller
 @SessionAttributes("shoppingCart")
@@ -40,8 +39,9 @@ public class ScheduleTicketController {
 	}
 
 	@RequestMapping(value = "/scheduleTicket", method = RequestMethod.GET)
-	public String getScheduleTicket(Model model) throws Exception {
+	public String getScheduleTicket(Model model, ShoppingCart shoppingCart) throws Exception {
 		System.out.println("Executing ScheduleTicket GET method.");
+		shoppingCart.setId(null);
 
 		List<Integer> numberList = new ArrayList<Integer>() {
 			{
@@ -63,19 +63,6 @@ public class ScheduleTicketController {
 		model.addAttribute("dateslist", datesList);
 		model.addAttribute("citieslist", ticketManagerService.getCities());
 		return "scheduleTicket";
-	}
-	
-	@RequestMapping(value = "/buyTicket", method = RequestMethod.GET)
-	public String getBuyTicket(ShoppingCart shoppingCart) throws Exception {
-		System.out.println("Executing BuyTicket GET method.");
-		System.out.println(shoppingCart.getId());
-		return "buyTicket";
-	}
-	
-	@RequestMapping(value = "/viewAvailable", method = RequestMethod.GET)
-	public String getViewAvailable(Model model) throws Exception {
-		System.out.println("Executing ViewAvailable GET method.");
-		return "viewAvailable";
 	}
 	
 	@RequestMapping(value = "/scheduleTicket", method = RequestMethod.POST)
