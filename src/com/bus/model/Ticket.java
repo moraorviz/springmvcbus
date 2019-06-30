@@ -24,4 +24,9 @@ public class Ticket {
 	public void setCode(String code) {
 		this.code = code;
 	}
+	
+	@Override
+	public String toString() {
+		return "Ticket [id=" + id + ", user=" + user + ", code=" + code + "]";
+	}
 }

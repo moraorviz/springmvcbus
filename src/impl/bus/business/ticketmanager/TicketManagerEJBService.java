@@ -39,4 +39,8 @@ public class TicketManagerEJBService implements TicketManagerService {
 			System.out.println("TicketManagerEJBService.newTicket().");
 			return ticketManager.newTicket(travel);
 		}
+		
+		public Ticket cancelTicket(Ticket ticket) throws Exception {
+			return this.ticketManager.cancelTicket(ticket);
+		}
 }

@@ -186,4 +186,11 @@ public class TicketDAO implements TicketDataService {
 		
 		return ticket;
 	}
+
+	@Override
+	public Ticket cancelTicket(Ticket ticket) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println("Deleting ticket: " + ticket.toString());
+		return null;
+	}
 }

@@ -37,5 +37,9 @@ public class TicketManager implements TicketManagerService {
 	public Ticket newTicket(Ticket ticket) throws Exception {
 		return this.ticketDataService.newTicket(ticket);
 	}
+	
+	public Ticket cancelTicket(Ticket ticket) throws Exception {
+		return this.ticketDataService.cancelTicket(ticket);
+	}
 
 }
