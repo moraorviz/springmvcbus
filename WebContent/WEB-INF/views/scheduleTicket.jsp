@@ -1,12 +1,28 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page import = "java.io.*,java.util.*" %>
 
 <html>
 <head>
 <title>TuBus</title>
 </head>
 <body>
+     <%
+         Integer hitsCount = (Integer)application.getAttribute("hitCounter");
+         if( hitsCount ==null || hitsCount == 0 ) {
+            /* First visit */
+            out.println("Welcome to my website!");
+            hitsCount = 1;
+         } else {
+            /* return visit */
+            out.println("Welcome back to my website!");
+            hitsCount += 1;
+         }
+         application.setAttribute("hitCounter", hitsCount);
+      %>
+
+
 	<h1 style="text-align: center;">TUBUS.COM</h1>
 	<br>
 	<h2 style="text-align: center;">
@@ -43,6 +59,11 @@
 		<input type="submit"/>
 	</form:form>
 	<a href="cancelTicket"><spring:message code="select.cancel"/></a>
+	<br>
+	    
+         <spring:message code="visitors"/>: <%= hitsCount%>
+
+	
 	
 	<script>
 
