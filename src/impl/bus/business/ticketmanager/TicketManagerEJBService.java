@@ -41,6 +41,10 @@ public class TicketManagerEJBService implements TicketManagerService {
 		}
 		
 		public Ticket cancelTicket(Ticket ticket) throws Exception {
-			return this.ticketManager.cancelTicket(ticket);
+			return ticketManager.cancelTicket(ticket);
+		}
+		
+		public boolean getTicket(Ticket ticket) throws Exception {
+			return ticketManager.getTicket(ticket);
 		}
 }

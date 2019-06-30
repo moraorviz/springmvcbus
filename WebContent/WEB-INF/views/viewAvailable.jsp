@@ -68,7 +68,8 @@
 	</form:form>
 		
 		<button onclick="printCalendar()"><spring:message code="select.print"/></button>
-		
+		<br>
+		<a href="scheduleTicket"><spring:message code="show.inicio"/></a>
 		<script>
 		
 		function selectOnlyThis(id) {

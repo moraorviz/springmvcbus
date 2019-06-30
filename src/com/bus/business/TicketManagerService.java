@@ -13,4 +13,5 @@ public interface TicketManagerService {
 	public Vector<Travel> getTravelsVuelta(Search search) throws Exception;
 	public Ticket newTicket(Ticket ticket) throws Exception;
 	public Ticket cancelTicket(Ticket ticket) throws Exception;
+	public boolean getTicket(Ticket ticket) throws Exception;
 }

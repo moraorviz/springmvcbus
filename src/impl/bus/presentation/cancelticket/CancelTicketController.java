@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bus.business.TicketManagerService;
+import com.bus.model.Message;
 import com.bus.model.Search;
 import com.bus.model.Ticket;
 
@@ -35,11 +36,18 @@ public class CancelTicketController {
 	}
 	
 	@RequestMapping(value = "/cancelTicket", method = RequestMethod.POST)
-	public String postCancelTicket(@ModelAttribute Ticket ticket, Model model, BindingResult result) throws Exception {
+	public String postCancelTicket(@ModelAttribute Ticket ticket, Model model, BindingResult result, Message message) throws Exception {
 		System.out.println("Executing CancelTicket POST method.");
+		Message text = new Message();
+		
+		if (ticketManagerService.getTicket(ticket)) {
+			text.setText("Ticket borrado con éxito");
+		} else {
+			text.setText("No se ha encontrado");
+		}
 		
 		ticketManagerService.cancelTicket(ticket);
-		
+		model.addAttribute("text", text);
 		return "cancelTicket";
 	}
 	

@@ -6,6 +6,20 @@ public class Ticket {
 	private String user;
 	private String code;
 	
+	public Ticket() {
+		
+	}
+	
+	public Ticket(Integer id, String user, String code) {
+		this.id = id;
+		this.user = user;
+		this.code = code;
+	}
+	
+	public Ticket(Integer id) {
+		this.id = id;
+	}
+	
 	public Integer getId() {
 		return id;
 	}

@@ -28,7 +28,8 @@
 	<button onclick="printCalendar()"><spring:message code="select.print"/></button>
 	<br>
 	<a href="sendResume"><spring:message code="select.sendresume"/></a>
-	
+	<br>
+	<a href="scheduleTicket"><spring:message code="show.inicio"/></a>
 	<script>
 	
 	function printCalendar() {

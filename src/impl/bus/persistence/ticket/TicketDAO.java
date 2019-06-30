@@ -1,7 +1,6 @@
 package impl.bus.persistence.ticket;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -186,11 +185,74 @@ public class TicketDAO implements TicketDataService {
 		
 		return ticket;
 	}
+	
+	@Override
+	public synchronized boolean getTicket(Ticket ticket) throws Exception {
+		
+		System.out.println("Getting ticket: " + ticket.toString());
+		
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+        Connection con = null;
+        
+        boolean result = false;
+		
+        try {
+            String SQL_DRV = "com.mysql.jdbc.Driver";
+            String SQL_URL = "jdbc:mysql://127.0.0.1:3306/autobus";
+            Class.forName(SQL_DRV);
+            con = DriverManager.getConnection(SQL_URL, "mario", "password");
+            ps = con.prepareStatement("select ticket_id from autobus.ticket where usr = ? and hashcode = ?");
+            ps.setString(1, ticket.getUser());
+            ps.setString(2, ticket.getCode());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+            	result = true;
+            }
+
+            
+        } catch (Exception e) {
+        	e.printStackTrace();
+        	throw(e);
+        } finally {
+        	try {
+				ps.close();
+				con.close();
+			} catch (Exception e) {
+			}
+        }
+		return result;
+	}
 
 	@Override
-	public Ticket cancelTicket(Ticket ticket) throws Exception {
+	public synchronized Ticket cancelTicket(Ticket ticket) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("Deleting ticket: " + ticket.toString());
-		return null;
+		
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+        Connection con = null;
+		
+        try {
+            String SQL_DRV = "com.mysql.jdbc.Driver";
+            String SQL_URL = "jdbc:mysql://127.0.0.1:3306/autobus";
+            Class.forName(SQL_DRV);
+            con = DriverManager.getConnection(SQL_URL, "mario", "password");
+            ps = con.prepareStatement("delete from autobus.ticket where hashcode = ? and usr = ?");
+            ps.setString(1, ticket.getCode());
+            ps.setString(2, ticket.getUser());
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+        	e.printStackTrace();
+        	throw(e);
+        } finally {
+        	try {
+				ps.close();
+				con.close();
+			} catch (Exception e) {
+			}
+        }
+		return ticket;
 	}
 }

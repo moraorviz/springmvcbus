@@ -31,7 +31,8 @@
 	<br>
 	<input type="submit" value="submit" />
 	</form:form>
-	
+	<br>
+	<a href="scheduleTicket"><spring:message code="show.inicio"/></a>
 	<script>
 		function enableBike(id) {
 			if (document.getElementById(id).checked == true) {
