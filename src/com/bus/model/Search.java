@@ -4,7 +4,8 @@ import java.sql.Date;
 
 public class Search {
 	
-	//private boolean roundTrip;
+	private boolean roundTrip;
+	private boolean onlyGo;
 	private int departure;
 	private int arrival;
 	private Date departureDate;
@@ -46,6 +47,18 @@ public class Search {
 	public String toString() {
 		return "Search [departure=" + departure + ", arrival=" + arrival + ", departureDate=" + departureDate + 
 				", returnDate=" + returnDate + ", number=" + number + "]";
+	}
+	public boolean isRoundTrip() {
+		return roundTrip;
+	}
+	public void setRoundTrip(boolean roundTrip) {
+		this.roundTrip = roundTrip;
+	}
+	public boolean isOnlyGo() {
+		return onlyGo;
+	}
+	public void setOnlyGo(boolean onlyGo) {
+		this.onlyGo = onlyGo;
 	}
 
 }

@@ -12,17 +12,19 @@
 	<h2 style="text-align: center;">
 		<spring:message code="welcome" />
 	</h2>
+	
+	
+	<form:form modelAttribute="search" accept-charset="utf-8">
+	
 	<br>
 	<spring:message code="select.type" />
-	<input type="checkbox" id="Check1" value="oneway"
-		onclick="selectOnlyThis(this.id)" />
+	<form:checkbox id="Check1" onclick="selectOnlyThis(this.id)" path="onlyGo"/>
 	<spring:message code="select.oneway" />
-	<input type="checkbox" id="Check2" value="round"
-		onclick="selectOnlyThis(this.id)" />
+	<form:checkbox id="Check2" value="roundtrip" path="roundTrip"
+		onclick="selectOnlyThis(this.id)"/>
 	<spring:message code="select.round" />
 	<br>
 	
-	<form:form modelAttribute="search" accept-charset="utf-8">
 		<spring:message code="select.departure_city" />
 		<form:select itemValue="id" itemLabel="name" path="departure" items="${citieslist}" />
 		<br>

@@ -22,6 +22,7 @@ public class BuyTicketController {
 	public String getBuyTicket(Model model, ShoppingCart shoppingCart) throws Exception {
 		System.out.println("Executing BuyTicket GET method.");
 		System.out.println(shoppingCart.getId());
+		System.out.println(shoppingCart.getVueltaId());
 		
 		List<Integer> numberList = new ArrayList<Integer>() {
 			{

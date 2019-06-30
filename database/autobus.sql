@@ -25,6 +25,13 @@ CREATE TABLE travel (
 	PRIMARY KEY (travel_id)
 );
 
+CREATE TABLE IF NOT EXISTS ticket (
+    ticket_id INT AUTO_INCREMENT,
+    usr VARCHAR(255) NOT NULL,
+    hashcode VARCHAR(255) NOT NULL,
+    PRIMARY KEY (ticket_id)
+)  ENGINE=INNODB;
+
 -- HC Test data
 INSERT INTO `city` VALUES (1, 'Oviedo'),
 (2, 'Madrid'),

@@ -39,5 +39,10 @@ public class User {
 	public void setIdent(String ident) {
 		this.ident = ident;
 	}
+	
+	@Override 
+	public String toString() {
+		return "User [nombre=" + nombre + ", apellidos=" + apellidos + ", tipoIdent=" + tipoIdent + ", ident=" +  ident + ", email=" + email + "]";
+	}
 
 }

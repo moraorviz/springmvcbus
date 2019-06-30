@@ -42,6 +42,8 @@ public class ScheduleTicketController {
 	public String getScheduleTicket(Model model, ShoppingCart shoppingCart) throws Exception {
 		System.out.println("Executing ScheduleTicket GET method.");
 		shoppingCart.setId(null);
+		shoppingCart.setVueltaId(null);
+		shoppingCart.setCode(null);
 
 		List<Integer> numberList = new ArrayList<Integer>() {
 			{
@@ -70,8 +72,11 @@ public class ScheduleTicketController {
 		System.out.println("Executing ScheduleTicket POST method.");
 		System.out.println("Received " + search);
 		
-		try {
+		try {	
 			model.addAttribute("travels", this.ticketManagerService.getTravels(search));
+			if (search.getReturnDate() != null) {
+				model.addAttribute("travelsVuelta", this.ticketManagerService.getTravelsVuelta(search));
+			}
 			model.addAttribute("shoppingCart", shoppingCart);
 		} catch (Exception e) {
 			e.printStackTrace();
