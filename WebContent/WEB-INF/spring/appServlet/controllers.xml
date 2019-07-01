@@ -17,7 +17,7 @@
 	<security:global-method-security secured-annotations="enabled" />
 	<mvc:annotation-driven />
 
-	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/resources/**" location="WEB-INF/classes/resources/" />
 
 	<!-- Definimos nuestros controladores -->
 	<context:component-scan  base-package="impl.bus, com.bus" />

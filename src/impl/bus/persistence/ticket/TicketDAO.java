@@ -24,7 +24,7 @@ public class TicketDAO implements TicketDataService {
 
         try {
             String SQL_DRV = "com.mysql.jdbc.Driver";
-            String SQL_URL = "jdbc:mysql://127.0.0.1:3306/autobus";
+            String SQL_URL = "jdbc:mysql://localhost:3306/autobus";
 
             Class.forName(SQL_DRV);
             con = DriverManager.getConnection(SQL_URL, "mario", "password");
@@ -64,7 +64,7 @@ public class TicketDAO implements TicketDataService {
 		
         try {
             String SQL_DRV = "com.mysql.jdbc.Driver";
-            String SQL_URL = "jdbc:mysql://127.0.0.1:3306/autobus";
+            String SQL_URL = "jdbc:mysql://localhost:3306/autobus";
             Class.forName(SQL_DRV);
             con = DriverManager.getConnection(SQL_URL, "mario", "password");
             ps = con.prepareStatement("select * from autobus.travel where departure_date = ? and departure_id = ? and arrival_id = ? ");
@@ -110,7 +110,7 @@ public class TicketDAO implements TicketDataService {
 		
         try {
             String SQL_DRV = "com.mysql.jdbc.Driver";
-            String SQL_URL = "jdbc:mysql://127.0.0.1:3306/autobus";
+            String SQL_URL = "jdbc:mysql://localhost:3306/autobus";
             Class.forName(SQL_DRV);
             con = DriverManager.getConnection(SQL_URL, "mario", "password");
             ps = con.prepareStatement("select * from autobus.travel where departure_date = ? and departure_id = ? and arrival_id = ? ");
@@ -155,7 +155,7 @@ public class TicketDAO implements TicketDataService {
 		
         try {
             String SQL_DRV = "com.mysql.jdbc.Driver";
-            String SQL_URL = "jdbc:mysql://127.0.0.1:3306/autobus";
+            String SQL_URL = "jdbc:mysql://localhost:3306/autobus";
             Class.forName(SQL_DRV);
             con = DriverManager.getConnection(SQL_URL, "mario", "password");
             ps = con.prepareStatement("select max(ticket_id) as maximo from autobus.ticket");
@@ -199,7 +199,7 @@ public class TicketDAO implements TicketDataService {
 		
         try {
             String SQL_DRV = "com.mysql.jdbc.Driver";
-            String SQL_URL = "jdbc:mysql://127.0.0.1:3306/autobus";
+            String SQL_URL = "jdbc:mysql://localhost:3306/autobus";
             Class.forName(SQL_DRV);
             con = DriverManager.getConnection(SQL_URL, "mario", "password");
             ps = con.prepareStatement("select ticket_id from autobus.ticket where usr = ? and hashcode = ?");
@@ -234,7 +234,7 @@ public class TicketDAO implements TicketDataService {
 		
         try {
             String SQL_DRV = "com.mysql.jdbc.Driver";
-            String SQL_URL = "jdbc:mysql://127.0.0.1:3306/autobus";
+            String SQL_URL = "jdbc:mysql://localhost:3306/autobus";
             Class.forName(SQL_DRV);
             con = DriverManager.getConnection(SQL_URL, "mario", "password");
             ps = con.prepareStatement("delete from autobus.ticket where hashcode = ? and usr = ?");
